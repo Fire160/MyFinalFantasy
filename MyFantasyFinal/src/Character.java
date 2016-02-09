@@ -13,6 +13,6 @@ public class Character
 //	    int B = (int) (Math.random() * 256);
 //	    Color c = new Color(R, G, B);
 	    g.setColor(Color.WHITE);
-	    g.fillRect(FinalFrame.x, FinalFrame.y, size, size);
+	    g.fillRect(FinalFrame.WindowSize.width/2, FinalFrame.WindowSize.height, size, size);
 		}
 	}
