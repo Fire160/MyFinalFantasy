@@ -25,8 +25,8 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 	private static BufferedImage image;
 	JTextArea displayArea;
     JTextField typingArea;
-    private static int x = -26;
-   	private static int y = -70;
+    private static int x = WindowSize.width/2;
+   	private static int y = WindowSize.height/2;
 	public FinalFrame(String string)
 		{
 		super(string);
@@ -69,19 +69,27 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		{
 		if(e.getKeyCode() == 87)
 			{
-			y += 2;
+			y += 15;
+			repaint();
+			y += 15;
 			}
 		else if(e.getKeyCode() == 65)
 			{
-			x += 2;
+			x += 15;
+			repaint();
+			x += 15;
 			}
 		else if(e.getKeyCode() == 83)
 			{
-			y -= 2;
+			y -= 15;
+			repaint();
+			y -= 15;
 			}
 		else if(e.getKeyCode() == 68)
 			{
-			x -= 2;
+			x -= 15;
+			repaint();
+			x -= 15;
 			}
 		else if(e.getKeyCode() == 69)
 			{}
@@ -103,17 +111,17 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		{}
 	public void paint(Graphics g)
 		{
-		try
-			{
-			image = ImageIO.read(new File("PalletTown.png"));
-			} catch (IOException e)
-			{e.printStackTrace();}
-	    getContentPane().setBackground(Color.BLACK);
+//		try
+//			{
+//			image = ImageIO.read(new File("PalletTown.png"));
+//			} catch (IOException e)
+//			{e.printStackTrace();}
+//	    getContentPane().setBackground(Color.BLACK);
 //	    int R = (int) (Math.random() * 256);
 //	    int G = (int) (Math.random() * 256);        
 //	    int B = (int) (Math.random() * 256);
 //	    Color c = new Color(R, G, B);
-	    g.drawImage(image, x, y, null);
+//	    g.drawImage(image, x, y, null);
 	    g.setColor(Color.BLUE);
 	    g.fillRect(x, y, 30, 30);
 		}
