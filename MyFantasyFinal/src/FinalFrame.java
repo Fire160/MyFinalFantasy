@@ -115,6 +115,10 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 //	    Color c = new Color(R, G, B);
 	    g.drawImage(image, x, y, null);
 	    g.setColor(Color.BLUE);
-	    g.fillRect(WindowSize.width/2, WindowSize.height/2, 30, 30);
+	    g.fillRect(x, y, 30, 30);
+		}
+	public void paintT(Graphics g)
+		{
+		
 		}
 	}
