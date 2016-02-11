@@ -13,7 +13,7 @@ public class MapMaker extends Canvas
 		{
 		path = g;
 		}
-	public void writeToFile( String textLine ) throws IOException 
+	public void writeToFile(String textLine) throws IOException 
 		{
 		FileWriter write = new FileWriter(path, append);
 		PrintWriter printLine = new PrintWriter( write );
@@ -27,7 +27,7 @@ public class MapMaker extends Canvas
 		}
 	public static void main(String [] args)
 		{
-		MapMaker f = new MapMaker("C:/users/michael.young/Desktop/text.txt");
+		MapMaker f = new MapMaker("C:/users/michael.young/Desktop/text.png");
 		try
 			{
 			f.writeToFile("Yo Hommie");
