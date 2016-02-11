@@ -26,10 +26,10 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 	private static BufferedImage image;
 	JTextArea displayArea;
     JTextField typingArea;
-    private static int x = 7;
-   	private static int y = 5;
-   	private boolean[][] hitBoxes = MapStuff.makingAMap();
-   	private static boolean openInv = false;
+    public static int x = 7;
+    public static int y = 6;
+    public static boolean[][] hitBoxes = MapStuff.makingAMap();
+    public static boolean openInv = false;
 	public FinalFrame(String string)
 		{
 		super(string);
@@ -42,7 +42,7 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		Dimension screensize = new Dimension(1920, 1080);
 		int x = screensize.width/2 - WindowSize.width/2;
      	int y = screensize.height/2 - WindowSize.height/2;
-        finalFrame.setBounds(x, y, 480, 330);
+        finalFrame.setBounds(x, y, 481, 355);
 	    finalFrame.setVisible(true);
 		}
 	private void createWind()
@@ -53,12 +53,13 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		button.addActionListener(this);
 		//this.addKeyListener(this);
 		typingArea = new JTextField(20);
-		typingArea.addKeyListener(this);
+//		typingArea.addKeyListener(this);
+		this.addKeyListener(((KeyListener) new Controller()));
 //		displayArea = new JTextArea();
 //		displayArea.setEditable(false);
 //		JScrollPane scrollPane = new JScrollPane(displayArea);
 //		scrollPane.setSize(new Dimension(375, 125));
-		getContentPane().add(typingArea, BorderLayout.PAGE_END);
+//		getContentPane().add(typingArea, BorderLayout.PAGE_END);
 //		getContentPane().add(scrollPane, BorderLayout.CENTER);
 //		getContentPane().add(button, BorderLayout.AFTER_LINE_ENDS);
 //		getContentPane().add(stuff, BorderLayout.SOUTH);

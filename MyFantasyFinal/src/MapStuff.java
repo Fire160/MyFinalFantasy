@@ -29,6 +29,13 @@ public class MapStuff
 //				}
 //			System.out.println("");
 //			}
+		temp[2][2] = true;
+		temp[2][6] = true;
+		temp[5][4] = true;
+		temp[5][7] = true;
+		temp[6][6] = true;
+		temp[7][2] = true;
+//		temp[1][2] = true;
 		return temp;
 		}
 	}
