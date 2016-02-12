@@ -27,23 +27,23 @@ public abstract class Entity
 		{
 		g.drawImage(image, xPos*30, yPos*30, null);
 		}
-	public static int getXPos() 
+	public int getXPos() 
 		{
 		return xPos;
 		}
-	public static void setXPos(int fileNam)
+	public void setXPos(int fileNam)
 		{
 		Entity.xPos = fileNam;
 		}
-	public static int getYPos() 
+	public int getYPos() 
 		{
 		return yPos;
 		}
-	public static void setYPos(int fileNam)
+	public void setYPos(int fileNam)
 		{
 		Entity.yPos = fileNam;
 		}
-	public static String getFileNam() 
+	public String getFileNam() 
 		{
 		return fileNam;
 		}
@@ -51,7 +51,7 @@ public abstract class Entity
 		{
 		Entity.fileNam = fileNam;
 		}
-	public static BufferedImage getImage()
+	public BufferedImage getImage()
 		{
 		return image;
 		}

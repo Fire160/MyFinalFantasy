@@ -1,9 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,9 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -23,14 +19,14 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 	{
 	private static final long serialVersionUID = 1L;
 	public static final Dimension WindowSize = new Dimension(450, 300);
-	private static BufferedImage piMage;
+//	private static BufferedImage piMage;
 	
 	JTextArea displayArea;
     JTextField typingArea;
     public static int x = 7;
     public static int y = 6;
-    public static ArrayList<Square> hitBoxes = MapStuff.makingAMap();
-    Character player = new Character("HappyFace.gif", 7,6);
+    private static ArrayList<Square> hitBoxes = MapStuff.makingAMap();
+    public Character player = new Character("HappyFace.gif", 7,6);
     public static boolean openInv = false;
 	public FinalFrame(String string)
 		{
@@ -72,35 +68,35 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		}
 	public void keyPressed(KeyEvent e)
 		{
-		int direc = 0;
+//		int direc = 0;
 		if(e.getKeyCode() == 87)
 			{
-			direc = 1;
-//			if(hitBoxes[y-1][x] == false)
-//				{
+//			direc = 1;
+			if(hitBoxes.get(MapStuff.findPos(player.getXPos(), player.getYPos()-1)).isWalkable() == false)
+				{
 				player.setYPos(player.getYPos() - 1);
-//				}
+				}
 			}
 		else if(e.getKeyCode() == 65)
 			{
-//			if(hitBoxes[y][x-1] == false)
-//				{
-				x -= 1;
-//				}
+			if(hitBoxes.get(MapStuff.findPos(player.getXPos()-1, player.getYPos())).isWalkable() == false)
+				{
+				player.setXPos(player.getXPos() - 1);
+				}
 			}
 		else if(e.getKeyCode() == 83)
 			{
-//			if(hitBoxes[y+1][x] == false)
-//				{
-				y += 1;
-//				}
+			if(hitBoxes.get(MapStuff.findPos(player.getXPos(), player.getYPos()+1)).isWalkable() == false)
+				{
+				player.setYPos(player.getYPos() + 1);
+				}
 			}
 		else if(e.getKeyCode() == 68)
 			{
-//			if(hitBoxes[y][x+1] == false)
-//				{
-				x += 1;
-//				}
+			if(hitBoxes.get(MapStuff.findPos(player.getXPos()+1, player.getYPos())).isWalkable() == false)
+				{
+				player.setXPos(player.getXPos() + 1);
+				}
 			}
 //		else if(e.getKeyCode() == 69)
 //			{
@@ -114,14 +110,14 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 //				}
 //			}
 		else{}
-		if(openInv == true)
-			{
-			
-			}
-		else
-			{
+//		if(openInv == true)
+//			{
+//			
+//			}
+//		else
+//			{
 			repaint();
-			}
+//			}
 		typingArea.setText("");
 		}
 	public void keyReleased(KeyEvent e)
@@ -130,11 +126,6 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		{}
 	public void paint(Graphics g)
 		{
-		try
-			{
-			piMage = ImageIO.read(new File("Thingy.png"));
-			} catch (IOException e)
-			{e.printStackTrace();}
 		g.setColor(Color.BLACK);
 	    g.fillRect(0, 0, 1000, 1000);
 	    for(int i =0; i < hitBoxes.size(); i++)

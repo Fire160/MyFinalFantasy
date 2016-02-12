@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class Character extends Entity
 	{
-	public static void paint(Graphics g, int dir)
+	public void paint(Graphics g, int dir)
 		{
 		g.drawImage(image, xPos*30, yPos*30, null);
 		}
