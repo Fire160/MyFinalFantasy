@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -23,12 +24,13 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 	private static final long serialVersionUID = 1L;
 	public static final Dimension WindowSize = new Dimension(450, 300);
 	private static BufferedImage piMage;
-	private static BufferedImage image;
+	
 	JTextArea displayArea;
     JTextField typingArea;
     public static int x = 7;
     public static int y = 6;
-    public static boolean[][] hitBoxes = MapStuff.makingAMap();
+    public static ArrayList<Square> hitBoxes = MapStuff.makingAMap();
+    Character player = new Character("HappyFace.gif", 7,6);
     public static boolean openInv = false;
 	public FinalFrame(String string)
 		{
@@ -47,19 +49,19 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		}
 	private void createWind()
 		{
-		JButton button = new JButton("Inventory");
-		JButton stuff = new JButton("Hello");
-		button.addActionListener(this);
-		button.addActionListener(this);
-		//this.addKeyListener(this);
+//		JButton button = new JButton("Inventory");
+//		JButton stuff = new JButton("Hello");
+//		button.addActionListener(this);
+//		stuff.addActionListener(this);
+//		this.addKeyListener(this);
 		typingArea = new JTextField(20);
-//		typingArea.addKeyListener(this);
-		this.addKeyListener(((KeyListener) new Controller()));
+		typingArea.addKeyListener(this);
+//		this.addKeyListener(((KeyListener) new Controller()));
 //		displayArea = new JTextArea();
 //		displayArea.setEditable(false);
 //		JScrollPane scrollPane = new JScrollPane(displayArea);
 //		scrollPane.setSize(new Dimension(375, 125));
-//		getContentPane().add(typingArea, BorderLayout.PAGE_END);
+		getContentPane().add(typingArea, BorderLayout.PAGE_END);
 //		getContentPane().add(scrollPane, BorderLayout.CENTER);
 //		getContentPane().add(button, BorderLayout.AFTER_LINE_ENDS);
 //		getContentPane().add(stuff, BorderLayout.SOUTH);
@@ -70,57 +72,51 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		}
 	public void keyPressed(KeyEvent e)
 		{
+		int direc = 0;
 		if(e.getKeyCode() == 87)
 			{
-			if(hitBoxes[y-1][x] == false)
-				{
-				y -= 1;
-				}
+			direc = 1;
+//			if(hitBoxes[y-1][x] == false)
+//				{
+				player.setYPos(player.getYPos() - 1);
+//				}
 			}
 		else if(e.getKeyCode() == 65)
 			{
-			if(hitBoxes[y][x-1] == false)
-				{
+//			if(hitBoxes[y][x-1] == false)
+//				{
 				x -= 1;
-				}
+//				}
 			}
 		else if(e.getKeyCode() == 83)
 			{
-			if(hitBoxes[y+1][x] == false)
-				{
+//			if(hitBoxes[y+1][x] == false)
+//				{
 				y += 1;
-				}
+//				}
 			}
 		else if(e.getKeyCode() == 68)
 			{
-			if(hitBoxes[y][x+1] == false)
-				{
+//			if(hitBoxes[y][x+1] == false)
+//				{
 				x += 1;
-				}
+//				}
 			}
-		else if(e.getKeyCode() == 69)
-			{
-			if(openInv == true)
-				{
-				openInv = false;
-				}
-			else
-				{
-				openInv = true;
-				}
-			}
+//		else if(e.getKeyCode() == 69)
+//			{
+//			if(openInv == true)
+//				{
+//				openInv = false;
+//				}
+//			else
+//				{
+//				openInv = true;
+//				}
+//			}
 		else{}
-		if(x < -350)
-			{
-			x = -350;
-			}
-		if(y < -400)
-			{
-			y = -400;
-			}
 		if(openInv == true)
 			{
-			paintInv();
+			
 			}
 		else
 			{
@@ -136,38 +132,41 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		{
 		try
 			{
-			image = ImageIO.read(new File("HappyFace.gif"));
 			piMage = ImageIO.read(new File("Thingy.png"));
 			} catch (IOException e)
 			{e.printStackTrace();}
 		g.setColor(Color.BLACK);
 	    g.fillRect(0, 0, 1000, 1000);
-	    g.setColor(Color.CYAN);
-	    for(int i = 0; i < 11; i++)
-			{
-		    g.fillRect(0, i*30, 30, 30);
-		    g.fillRect(15*30, i*30, 30, 30);
-			}
-		for(int i = 0; i < 16; i++)
-			{
-		    g.fillRect(i*30, 30, 30, 30);
-		    g.fillRect(i*30, 10*30, 30, 30);
-			}
-//	    int R = (int) (Math.random() * 256);
-//	    int G = (int) (Math.random() * 256);        
-//	    int B = (int) (Math.random() * 256);
-//	    Color c = new Color(R, G, B);
-	    g.drawImage(piMage, 2*30, 2*30, null);
-	    g.drawImage(piMage, 4*30, 5*30, null);
-	    g.drawImage(piMage, 2*30, 7*30, null);
-	    g.drawImage(piMage, 6*30, 2*30, null);
-	    g.drawImage(piMage, 7*30, 5*30, null);
-	    g.drawImage(piMage, 6*30, 6*30, null);
+	    for(int i =0; i < hitBoxes.size(); i++)
+	    	{
+	    	hitBoxes.get(i).paint(g);
+	    	}
+//	    g.setColor(Color.CYAN);
+//	    for(int i = 0; i < 11; i++)
+//			{
+//		    g.fillRect(0, i*30, 30, 30);
+//		    g.fillRect(15*30, i*30, 30, 30);
+//			}
+//		for(int i = 0; i < 16; i++)
+//			{
+//		    g.fillRect(i*30, 0, 30, 30);
+//		    g.fillRect(i*30, 10*30, 30, 30);
+//			}
+////	    int R = (int) (Math.random() * 256);
+////	    int G = (int) (Math.random() * 256);        
+////	    int B = (int) (Math.random() * 256);
+////	    Color c = new Color(R, G, B);
+//	    g.drawImage(piMage, 2*30, 2*30, null);
+//	    g.drawImage(piMage, 4*30, 5*30, null);
+//	    g.drawImage(piMage, 2*30, 7*30, null);
+//	    g.drawImage(piMage, 6*30, 2*30, null);
+//	    g.drawImage(piMage, 7*30, 5*30, null);
+//	    g.drawImage(piMage, 6*30, 6*30, null);
 //	    g.setColor(Color.BLUE);
 //	    g.fillRect(x * 30, y * 30, 30, 30);
-	    g.drawImage(image, x*30, y*30, null);
+	    player.paint(g,0);
 		}
-	public void paintInv()
+	public void paintInv(Graphics g)
 		{
 		
 		}

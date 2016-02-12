@@ -1,25 +1,23 @@
+import java.util.ArrayList;
 
 public class MapStuff
 	{
-	public static boolean[][] makingAMap()
+	public static ArrayList<Square> makingAMap()
 		{
-		boolean[][] temp = new boolean[11][16];
-		for(boolean[] bob:temp)
+		ArrayList<Square> temp = new ArrayList<Square>();
+		for(int x = 0; x < 11; x++)
 			{
-			for(boolean dog:bob)
+			for(int y = 0; y < 16; y++)
 				{
-				dog = false;
+				if((x == 0) || (x == 11) || (y == 0) || (y == 16))
+					{
+					temp.add(new Square("Thingy.png", x,y,true));
+					}
+				else
+					{
+					temp.add(new Square("Thingy.png", x,y,false));
+					}
 				}
-			}
-		for(int i = 0; i < 11; i++)
-			{
-			temp[i][0] = true;
-			temp[i][15] = true;
-			}
-		for(int i = 0; i < 16; i++)
-			{
-			temp[1][i] = true;
-			temp[10][i] = true;
 			}
 //		for(boolean[] bob:temp)
 //			{
@@ -29,12 +27,12 @@ public class MapStuff
 //				}
 //			System.out.println("");
 //			}
-		temp[2][2] = true;
-		temp[2][6] = true;
-		temp[5][4] = true;
-		temp[5][7] = true;
-		temp[6][6] = true;
-		temp[7][2] = true;
+//		temp[2][2] = true;
+//		temp[2][6] = true;
+//		temp[5][4] = true;
+//		temp[5][7] = true;
+//		temp[6][6] = true;
+//		temp[7][2] = true;
 //		temp[1][2] = true;
 		return temp;
 		}

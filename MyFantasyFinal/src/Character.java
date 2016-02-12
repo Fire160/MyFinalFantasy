@@ -1,18 +1,24 @@
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class Character
+import javax.imageio.ImageIO;
+
+public class Character extends Entity
 	{
-	public void paint(Graphics g)
+	public static void paint(Graphics g, int dir)
 		{
-	    g.setColor(Color.BLACK);
-	    g.fillRect(0, 0, FinalFrame.WindowSize.width, FinalFrame.WindowSize.height);
-	    int size = 50;
-//	    int R = (int) (Math.random() * 256);
-//	    int G = (int) (Math.random() * 256);        
-//	    int B = (int) (Math.random() * 256);
-//	    Color c = new Color(R, G, B);
-	    g.setColor(Color.WHITE);
-	    g.fillRect(FinalFrame.WindowSize.width/2, FinalFrame.WindowSize.height, size, size);
+		g.drawImage(image, xPos*30, yPos*30, null);
+		}
+	public Character(String f, int x, int y)
+		{
+		try
+			{
+			image = ImageIO.read(new File("HappyFace.gif"));
+			} catch (IOException e)
+			{e.printStackTrace();}
+		xPos = x;
+		yPos =y;
 		}
 	}
