@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,6 +22,7 @@ public class Square
 			image = ImageIO.read(new File(f));
 			} catch (IOException e)
 			{e.printStackTrace();}
+		f = fileNam;
 		xPos = x;
 		yPos = y;
 		isWalkable = n;
@@ -55,6 +55,11 @@ public class Square
 		}
 	public void setFileNam(String fileN)
 		{
+		try
+			{
+			image = ImageIO.read(new File(fileN));
+			} catch (IOException e)
+			{e.printStackTrace();}
 		fileNam = fileN;
 		}
 	public BufferedImage getImage()

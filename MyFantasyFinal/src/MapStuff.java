@@ -9,36 +9,32 @@ public class MapStuff
 			{
 			for(int y = 0; y < 11; y++)
 				{
-				if((x == 0) || (x == 15) || (y == 1) || (y == 10))
+				if(y == 1 || y == 10)
 					{
-					temp.add(new Square("Thingy.png", x,y,true));
+					temp.add(new Square("imagesS.jpeg", x,y,true));
+					}
+				else if((x == 0) || (x == 15))
+					{
+					temp.add(new Square("images-2.jpeg", x,y,true));
 					}
 				else
 					{
-					temp.add(new Square("dogHead.png", x,y,false));
+					temp.add(new Square("images.jpeg", x,y,false));
 					}
 				}
-
 			}
-//		for(int i =0; i < temp.size(); i++)
-//	    	{
-//	    	System.out.println(temp.get(i).getXPos() + " " + temp.get(i).getYPos());
-//	    	}
-//		for(boolean[] bob:temp)
-//			{
-//			for(boolean dog:bob)
-//				{
-//				System.out.print(dog);
-//				}
-//			System.out.println("");
-//			}
-//		temp[2][2] = true;
-//		temp[2][6] = true;
-//		temp[5][4] = true;
-//		temp[5][7] = true;
-//		temp[6][6] = true;
-//		temp[7][2] = true;
-//		temp[1][2] = true;
+//		temp.get(0).setFileNam("");
+//		temp.get(0).setFileNam("");
+//		temp.get(0).setFileNam("");
+//		temp.get(temp.size()).setFileNam("");
+		changeSquare(temp, 18, true, "Thingy.png");
+		changeSquare(temp, 15, true, "Thingy.png");
+		changeSquare(temp, 47, true, "Thingy.png");
+		changeSquare(temp, 147, true, "Thingy.png");
+		changeSquare(temp, 25, true, "Thingy.png");
+		changeSquare(temp, 35, true, "Thingy.png");
+		changeSquare(temp, 38, true, "Thingy.png");
+		System.out.println(temp.size());
 		return temp;
 		}
 	public static int findPos(int x, int y)
@@ -46,5 +42,9 @@ public class MapStuff
 		int temp = 0;
 		temp = (x * 11) + y - 1;
 		return temp;
+		}
+	public static void changeSquare(ArrayList<Square> temp, int change, boolean whoa, String charge)
+		{
+		temp.get(change).setWalkable(whoa); temp.get(change).setFileNam(charge);
 		}
 	}

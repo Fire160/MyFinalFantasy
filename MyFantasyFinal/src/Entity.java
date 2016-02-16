@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 public abstract class Entity
 	{
 	protected static String fileNam;
+	protected boolean willKill;
 	protected static BufferedImage image;
 	protected static int xPos;
 	protected static int yPos;
@@ -15,15 +16,19 @@ public abstract class Entity
 		{
 		
 		}
-	public Entity(String f, int x, int y)
+	public Entity(String f, int x, int y, boolean will)
 		{
 		try
 			{
-			image = ImageIO.read(new File(fileNam));
+			image = ImageIO.read(new File(f));
 			} catch (IOException e)
 			{e.printStackTrace();}
+		willKill = will;
+		f = fileNam;
+		x = xPos;
+		y = yPos;
 		}
-	public static void paint(Graphics g)
+	public void paint(Graphics g)
 		{
 		g.drawImage(image, xPos*30, yPos*30, null);
 		}
