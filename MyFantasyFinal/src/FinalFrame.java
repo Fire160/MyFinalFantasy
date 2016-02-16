@@ -28,7 +28,7 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
     public static int y = 6;
     public static ArrayList<Square> hitBoxes = MapStuff.makingAMap();
     public static Character player = new Character("HappyFace.gif", 7,6);
-    public static Enemy enemy = new Enemy("HappyFace.gif",4,4,true);
+// 	public static Enemy enemy = new Enemy("fire.png",4,4,true);
     public static boolean openInv = false;
 	public FinalFrame(String string)
 		{
@@ -36,7 +36,6 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		}
 	public static void main(String[] args)
 		{
-		System.out.println(enemy.getXPos() + " " + enemy.getYPos());
 		FinalFrame finalFrame = new FinalFrame("Final Frame");
 		finalFrame.createWind();
 		finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,17 +44,17 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
      	int y = screensize.height/2 - WindowSize.height/2;
         finalFrame.setBounds(x, y, 481, 355);
 	    finalFrame.setVisible(true);
-	    while(player.isAlive() == true)
-	    	{
-	    	if(player.getXPos() == enemy.getXPos() && player.getYPos() == enemy.getYPos())
-	    		{
-	    		player.setAlive(false);
-	    		}
-	    	else
-	    		{
-	    		finalFrame.doStuff(enemy);
-	    		}
-	    	}
+//	    while(player.isAlive() == true)
+//	    	{
+//	    	if(player.getXPos() == enemy.getXPos() && player.getYPos() == enemy.getYPos())
+//	    		{
+//	    		player.setAlive(false);
+//	    		}
+//	    	else
+//	    		{
+//	    		finalFrame.doStuff(enemy);
+//	    		}
+//	    	}
 		}
 	private void doStuff(Enemy enemy)
 		{
@@ -140,14 +139,18 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 //				}
 //			}
 		else{}
-//		if(openInv == true)
-//			{
-//			
-//			}
-//		else
-//			{
+		if(hitBoxes.get(MapStuff.findPos(player.getXPos(), player.getYPos())).isWillKill() == true)
+			{
+			player.setAlive(false);
+			}
+		else
+			{
 			repaint();
-//			}
+			}
+		if(player.isAlive() == false)
+			{
+			System.exit(0);
+			}
 		typingArea.setText("");
 		}
 	public void keyReleased(KeyEvent e)
@@ -156,40 +159,12 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 		{}
 	public void paint(Graphics g)
 		{
-//		try
-//			{
-//			piMage = ImageIO.read(new File("Thingy.png"));
-//			} catch (IOException e)
-//			{e.printStackTrace();}
 		g.setColor(Color.BLACK);
 	    g.fillRect(0, 0, 1000, 1000);
 	    for(int i = 0; i < hitBoxes.size(); i++)
 	    	{
 	    	hitBoxes.get(i).paint(g);
 	    	}
-//	    g.setColor(Color.CYAN);
-//	    for(int i = 0; i < 11; i++)
-//			{
-//		    g.fillRect(0, i*30, 30, 30);
-//		    g.fillRect(15*30, i*30, 30, 30);
-//			}
-//		for(int i = 0; i < 16; i++)
-//			{
-//		    g.fillRect(i*30, 0, 30, 30);
-//		    g.fillRect(i*30, 10*30, 30, 30);
-//			}
-////	    int R = (int) (Math.random() * 256);
-////	    int G = (int) (Math.random() * 256);        
-////	    int B = (int) (Math.random() * 256);
-////	    Color c = new Color(R, G, B);
-//	    g.drawImage(piMage, 2*30, 2*30, null);
-//	    g.drawImage(piMage, 4*30, 5*30, null);
-//	    g.drawImage(piMage, 2*30, 7*30, null);
-//	    g.drawImage(piMage, 6*30, 2*30, null);
-//	    g.drawImage(piMage, 7*30, 5*30, null);
-//	    g.drawImage(piMage, 6*30, 6*30, null);
-//	    g.setColor(Color.BLUE);
-//	    g.fillRect(x * 30, y * 30, 30, 30);
 	    player.paint(g,1);
 	    enemy.paint(g);
 		}

@@ -11,6 +11,7 @@ public class Square
 	private int xPos;
 	private int yPos;
 	private boolean isWalkable;
+	private boolean willKill;
 	public Square()
 		{
 		
@@ -77,5 +78,13 @@ public class Square
 	public void setWalkable(boolean isWalkabl)
 		{
 		isWalkable = isWalkabl;
+		}
+	public boolean isWillKill()
+		{
+			return willKill;
+		}
+	public void setWillKill(boolean willKill)
+		{
+			this.willKill = willKill;
 		} 
 	}
