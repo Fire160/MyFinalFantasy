@@ -16,7 +16,7 @@ public class Square
 		{
 		
 		}
-	public Square(String f, int x, int y, boolean n)
+	public Square(String f, int x, int y, boolean n, boolean m)
 		{
 		try
 			{
@@ -27,6 +27,7 @@ public class Square
 		xPos = x;
 		yPos = y;
 		isWalkable = n;
+		willKill = m;
 		}
 	public void paint(Graphics g)
 		{

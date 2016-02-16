@@ -56,12 +56,12 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 //	    		}
 //	    	}
 		}
-	private void doStuff(Enemy enemy)
-		{
-		enemy.partrolX();
-		repaint();
-		try{Thread.sleep(100);} catch (InterruptedException e){e.printStackTrace();}
-		}
+//	private void doStuff(Enemy enemy)
+//		{
+//		enemy.partrolX();
+//		repaint();
+//		try{Thread.sleep(100);} catch (InterruptedException e){e.printStackTrace();}
+//		}
 	private void createWind()
 		{
 //		JButton button = new JButton("Inventory");
@@ -149,7 +149,7 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 			}
 		if(player.isAlive() == false)
 			{
-			System.exit(0);
+			DeathScreen over = new DeathScreen("Game Over");
 			}
 		typingArea.setText("");
 		}
@@ -166,7 +166,7 @@ public class FinalFrame extends JFrame implements KeyListener, ActionListener
 	    	hitBoxes.get(i).paint(g);
 	    	}
 	    player.paint(g,1);
-	    enemy.paint(g);
+//	    enemy.paint(g);
 		}
 	public void paintInv(Graphics g)
 		{
